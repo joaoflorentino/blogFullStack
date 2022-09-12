@@ -1,10 +1,14 @@
 package br.ufsc.cursofs.AulaSpringBoot.entities;
 
-import javax.persistence.Column;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Cliente {
@@ -19,8 +23,15 @@ public class Cliente {
 	private String fone;
 	private String senha;
 	
+	//Lista que recebe um ou mais enderecos (isso para fazer o relacionamento no BD)
+	@OneToMany(mappedBy = "cliente")
+	private List<Endereco> enderecos = new ArrayList<>();
+	
+	// CONSTRUTORES
+	//Construtor vazio
 	public Cliente() {}
 	
+	//Construtor com todos os atributos
 	public Cliente(Long id, String nome, String email, String fone, String senha) {
 		super();
 		this.id = id;
@@ -29,7 +40,9 @@ public class Cliente {
 		this.fone = fone;
 		this.senha = senha;
 	}
-
+	
+	
+	//Getrs & Setrs 
 	public Long getId() {
 		return id;
 	}
@@ -68,6 +81,11 @@ public class Cliente {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	
+	//Get para banco de dados com o atributo endereco
+	public List<Endereco> getEnderecos() {
+		return enderecos;
 	}
 
 	@Override

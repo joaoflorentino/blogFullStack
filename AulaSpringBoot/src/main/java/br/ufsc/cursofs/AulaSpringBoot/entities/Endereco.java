@@ -7,6 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Endereco implements Serializable{
@@ -21,15 +25,23 @@ public class Endereco implements Serializable{
 	private String numero;
 	private String cep;
 	
+	// Isto serve para fazer o relacionamento no BD
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "cliente_id")
+	private Cliente cliente;
+	
+	
 	// CONSTRUTORES
 	//Construtor com todos os campos 
-	public Endereco(Long id, String tipo, String rua, String numero, String cep) {
+	public Endereco(Long id, String tipo, String rua, String numero, String cep, Cliente cliente) {
 		super();
 		this.id = id;
 		this.tipo = tipo;
 		this.rua = rua;
 		this.numero = numero;
 		this.cep = cep;
+		this.cliente = cliente;
 	}
 	//Construtor vazio
 	public Endereco() {
@@ -69,7 +81,16 @@ public class Endereco implements Serializable{
 		this.cep = cep;
 	}
 	
-	//Criar o hash conde equals 
+	//Gets & Setrs para o banco de dados 
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	
+	
+	//Criar o hash code equals 
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

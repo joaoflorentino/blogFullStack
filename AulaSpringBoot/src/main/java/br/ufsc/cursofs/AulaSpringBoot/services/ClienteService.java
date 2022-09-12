@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.ufsc.cursofs.AulaSpringBoot.entities.Cliente;
+import br.ufsc.cursofs.AulaSpringBoot.entities.Endereco;
 import br.ufsc.cursofs.AulaSpringBoot.repositories.ClienteRepository;
+import br.ufsc.cursofs.AulaSpringBoot.repositories.EnderecoRepository;
 
 @Service
 public class ClienteService {
@@ -17,6 +19,30 @@ public class ClienteService {
 	@Autowired
 	private ClienteRepository clienteRepository; 
 	
+	@Autowired
+	private EnderecoRepository enderecoRepository;
+	
+	//Servico para associar e desassociar um endereço ao cliente
+	public Cliente addEndereco(Long idCliente, Long idEndereco) {
+		Cliente cliente = clienteRepository.findById(idCliente).get();
+		Endereco endereco = enderecoRepository.findById(idEndereco).get();
+		
+		endereco.setCliente(cliente);
+		enderecoRepository.save(endereco);
+		return cliente;
+	}
+	
+	//Servico para Remover  um endereço do cliente
+		public Cliente removeEndereco(Long idCliente, Long idEndereco) {
+			Cliente cliente = clienteRepository.findById(idCliente).get();
+			Endereco endereco = enderecoRepository.findById(idEndereco).get();
+			
+			endereco.setCliente(null);
+			enderecoRepository.save(endereco);
+			return cliente;
+		}
+		
+		
 	public Cliente update(Long id, Cliente cliente) {
 		Cliente clienteEntity = clienteRepository.getReferenceById(id);
 		

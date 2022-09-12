@@ -23,6 +23,20 @@ public class ClienteController {
 	@Autowired
 	private ClienteService clienteService;
 	
+	@GetMapping(value = "/clientes/{id_cliente}/addEndereco/{id_endereco}")
+	public ResponseEntity<Cliente> addEndereco(@PathVariable Long id_cliente, @PathVariable Long id_endereco){
+		Cliente cliente = clienteService.addEndereco(id_cliente, id_endereco);
+		
+		return ResponseEntity.ok().body(cliente);
+	}
+	
+	@DeleteMapping(value = "/clientes/{id_cliente}/removeEndereco/{id_endereco}")
+	public ResponseEntity<Cliente> removeEndereco(@PathVariable Long id_cliente, @PathVariable Long id_endereco){
+		Cliente cliente = clienteService.removeEndereco(id_cliente, id_endereco);
+		
+		return ResponseEntity.ok().body(cliente);
+	}
+	
 	@PutMapping(value = "/clientes/{id}")
 	public ResponseEntity<Cliente> update(@PathVariable Long id, @RequestBody Cliente cliente){
 		Cliente clienteAtualizado = clienteService.update(id, cliente);
