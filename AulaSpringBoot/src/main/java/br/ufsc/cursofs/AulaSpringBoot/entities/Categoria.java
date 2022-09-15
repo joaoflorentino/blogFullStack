@@ -1,12 +1,17 @@
 package br.ufsc.cursofs.AulaSpringBoot.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -18,6 +23,10 @@ public class Categoria implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String descricao;
+	
+	@JsonIgnore  // Para não gerar o json devido ao relacionamento com a outra tabela
+	@ManyToMany(mappedBy = "categorias")
+	private Set<Produto> produtos = new HashSet<>();
 	
 	//Contrutores
 	//Cobtrutor vazio
@@ -33,6 +42,11 @@ public class Categoria implements Serializable{
 	
 	
 	//Getrs & Setrs
+	
+	public Set<Produto> getProdutos() {
+		return produtos;
+	}
+	
 	public Long getId() {
 		return id;
 	}

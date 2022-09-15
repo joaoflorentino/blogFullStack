@@ -85,6 +85,10 @@ public class Produto implements Serializable{
 		return categorias;
 	}
 	
+	//Metodo para calcular valor do estoque
+	public Double getValorEstoque() {
+		return this.quantidade * this.preco;
+	}
 	//End Getrs & Setrs
 
 	// hashcode e Equals (apenas para atributo que identifica a classe o Id)
