@@ -1,0 +1,163 @@
+*--*-*-**-**-**-*-**-*****-**-**-*-*-*-*-*-**-*
+Trabalho Parte II – Spring Boot + REST
+=-=--=-=-=-=-=-=-=-=-=-=-=---=-=--=-=-=-=-=-=-=-
+Trabalho Spring Boot  curso Desenvolvimento Full Stack
+
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+API que recebe uma publicação que possui 
+Assunto
+Que vem de Postagens
+Feita por um Editor
+Que possui Comentários
+
+Deve ser entregue: projeto do Spring Boot organizado usando Maven (ou Gradle) com todas
+as configurações necessárias para executar. Deverá conter um arquivo texto ou doc no raiz do
+projeto descrevendo todos os endpoints criados e os parâmetros necessários para o teste.
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+ETAPAS DO PROJETO   
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+1) Criar o projeto BlogFullStack no SpringBoot
+    Dependencias no projeto: Spring Web, Spring Data JPA, H2 Database
+
+2)
+
+2A) Nome do projeto: { BlogFullStack }
+        Project
+            Maven Project
+        Language
+            Java
+        Spring Boot
+            2.7.3
+        Project Metadata
+            Group
+                br.com.jflorentino
+            Artifact
+                TrabFinalSpringBFS
+            Name
+                TrabFinalSpringBFS
+            Description
+                {Trabalho final curso FullStack UFSC 2022}
+            Package name
+                br.com.florentino.TrabFinalSpringBFS
+            Packaging 
+                Jar
+
+______________________________
+    Dependencies
+        Spring Web, 
+        Spring Data JPA,
+        H2 Database
+_____________________________
+2B) Depois de criado o projeto no Spring Initializr:
+    Criar os pacotes do projeto
+        br.com.jflorentino.TrabFinalSpringBFS.controllers
+        br.com.jflorentino.TrabFinalSpringBFS.controllers.exceptions
+        br.com.jflorentino.TrabFinalSpringBFS.entities
+        br.com.jflorentino.TrabFinalSpringBFS.repositories
+        br.com.jflorentino.TrabFinalSpringBFS.services
+        br.com.jflorentino.TrabFinalSpringBFS.test
+
+2C) No caminho src/main/resources 
+No application.properties configurar  para usar o H2:
+Em:  application.properties
+        spring.profiles.active=test
+        spring.jpa.open-in-view=true
+
+2D) Criar um arquivo na pasta src/main/resources {application-test.properties}
+Dentro do arquivo colocar:
+
+        spring.datasource.url=jdbc:h2:mem:blogdb
+        spring.datasource.username=sa
+        spring.datasource.password=
+        spring.h2.console.enabled=true
+        spring.h2.console.path=/h2-console
+
+        spring.jpa.show-sql=true
+        spring.jpa.properties.hibernate.format_sql=true
+
+
+
+3A) Definir a entidade Assunto (criar um package {entities} )
+    br.com.jflorentino.TrabFinalSpringBFS.entities
+        Assunto.java {Classe}
+
+*** Para cada entidade criada temos que realizar os seguintes passos:
+ Basic attributes
+ Associations (instantiate collections)
+ Constructors
+ Getters & Setters (collections: only get)
+ hashCode & equals
+ Implementar Serializable (https://www.baeldung.com/jpa-entities-serializable)
+ Annotations: @Entity, @Id, @GeneratedValue, @Column, ...
+
+4) Criar uma interface AssuntoRepository (criar um package {repositories} )
+Dentro desta classe inserir:
+
+public interface AssuntoRepository extends JpaRepository<Assunto, Long>{
+}
+
+
+5) Criar a classe Setup que será usada para iniciar o Spring Boot:(criar um package {test} )
+Dentro da pasta 
+Caminho {PublicacaoFullStack/src/main/java/jflorentino/PublicacaoFullStack/test}
+No arquivo escrever:
+
+@Configuration
+@Profile("test")
+
+public class Setup implements CommandLineRunner{
+	
+	// dependency injection
+	@Autowired
+	private AssuntoRepository assuntoRepository; 
+
+@Override
+	public void run(String... args) throws Exception {
+    Assunto a1 = new Assunto(null, "Astrofisica");
+    Assunto a2 = new Assunto(null, "Fisica Quantica");
+    Assunto a3 = new Assunto(null, "James Web");
+    Assunto a4 = new Assunto(null, "Matematica");
+    Assunto a5 = new Assunto(null, "Quimica");
+    Assunto a6 = new Assunto(null, "Introducao ao Full Stack");
+
+    assuntoRepository.saveAll(Arrays.asList(a1,a2,a3,a4,a5,a6));
+
+}
+
+________________________________________
+
+Feito ate aqui 18/09/2022
+funcionando perfeitamente no Vaio Mint-Vanessa
+________________________________________
+
+CONTINUACAO.....
+
+6) Criar o assunto service em:
+    pacote br.com.jflorentino.TrabFinalSpringBFS.services
+        AssuntoService.java {Classe}
+Esta classe é a responsável pelos serviços {CRUD} do cliente no Spring Boot.
+
+7) Criar o Controller {responsável pelas regras de acesso da pagina ao banco de dados}
+    br.com.jflorentino.TrabFinalSpringBFS.controllers
+        UserController.java {Classe}
+
+
+________________________________________
+
+Feito ate aqui 19/09/2022
+funcionando perfeitamente no Vaio Mint-Vanessa
+________________________________________
+
+
+
+    
+
+
+
+
+
+
+
+
