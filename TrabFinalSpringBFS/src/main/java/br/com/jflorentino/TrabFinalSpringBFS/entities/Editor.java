@@ -21,7 +21,7 @@ private static final long serialVersionUID = 1L;
 	//Construtor Vazio
 	public Editor() {}
 	//Construtor com todos os atributos
-	public Editor(String nome, String senha) {
+	public Editor(Long id, String nome, String senha) {
 		super();
 		this.nome = nome;
 		this.senha = senha;

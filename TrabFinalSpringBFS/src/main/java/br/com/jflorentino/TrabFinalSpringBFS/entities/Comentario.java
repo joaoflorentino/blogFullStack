@@ -1,5 +1,6 @@
 package br.com.jflorentino.TrabFinalSpringBFS.entities;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.Objects;
 
@@ -16,7 +17,7 @@ private static final long serialVersionUID = 1L;
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
-	private Date data;
+	private Instant data;
 	private String text;
 	
 	
@@ -24,7 +25,7 @@ private static final long serialVersionUID = 1L;
 	//Construtor Vazio
 	public Comentario() {}
 	//Construtor com todos os atributos
-	public Comentario(String nome, Date data, String text) {
+	public Comentario(Long id,String nome, Instant data, String text) {
 		super();
 		this.nome = nome;
 		this.data = data;
@@ -38,10 +39,10 @@ private static final long serialVersionUID = 1L;
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Date getData() {
+	public Instant getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(Instant data) {
 		this.data = data;
 	}
 	public String getText() {

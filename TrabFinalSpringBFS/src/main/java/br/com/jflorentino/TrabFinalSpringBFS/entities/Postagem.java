@@ -1,5 +1,6 @@
 package br.com.jflorentino.TrabFinalSpringBFS.entities;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.Objects;
 
@@ -15,7 +16,7 @@ public class Postagem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Date data;
+	private Instant data;
 	private String titulo;
 	private String texto;
 	
@@ -24,7 +25,7 @@ public class Postagem {
 	public Postagem() {}
 	
 	// Construtor Vazio	
-	public Postagem(Long id, Date data, String titulo, String texto) {
+	public Postagem(Long id, Instant data, String titulo, String texto) {
 		super();
 		this.id = id;
 		this.data = data;
@@ -33,11 +34,11 @@ public class Postagem {
 	}
 
 	// Getrs and Setrs
-	public Date getData() {
+	public Instant getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(Instant data) {
 		this.data = data;
 	}
 
