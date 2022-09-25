@@ -22,5 +22,11 @@ public class AssuntoService {
 	}
 	
 	
+	
+	public Assunto save(Assunto assunto) {
+		return assuntoRepository.save(assunto);
+	}
+	
+	
 
 }
