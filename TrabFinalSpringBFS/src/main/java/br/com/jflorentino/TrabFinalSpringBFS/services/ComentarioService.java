@@ -21,6 +21,8 @@ public class ComentarioService {
 		return comentarioRepository.findById(id).get();
 	}
 	
-	
+	public Comentario save(Comentario comentario){
+        return comentarioRepository.save(comentario);
+	}
 
 }

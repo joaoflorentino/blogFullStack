@@ -21,6 +21,8 @@ public class PostagemService {
 		return postagemRepository.findById(id).get();
 	}
 	
-	
+	public Postagem save(Postagem postagem){
+        return postagemRepository.save(postagem);
+	}
 
 }

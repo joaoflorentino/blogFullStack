@@ -21,6 +21,8 @@ public class EditorService {
 		return editorRepository.findById(id).get();
 	}
 	
-	
+	public Editor save(Editor editor){
+        return editorRepository.save(editor);
+	}
 
 }

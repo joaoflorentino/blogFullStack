@@ -34,8 +34,19 @@ public class Postagem {
 	}
 
 	// Getrs and Setrs
+	
+	
+	
 	public Instant getData() {
 		return data;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public void setData(Instant data) {

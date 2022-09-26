@@ -95,4 +95,11 @@
 		<item key="updateSimilarElements" value="false"/>
 		<item key="updateSimilarElementsMatchStrategy" value="1"/>
 	</section>
+	<section name="DialogBounds_AddDelegateMethodsDialog">
+		<item key="DIALOG_X_ORIGIN" value="479"/>
+		<item key="DIALOG_Y_ORIGIN" value="111"/>
+		<item key="DIALOG_WIDTH" value="607"/>
+		<item key="DIALOG_HEIGHT" value="568"/>
+		<item key="DIALOG_FONT_NAME" value="1|Ubuntu|10.0|0|GTK|1|"/>
+	</section>
 </section>

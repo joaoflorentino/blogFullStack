@@ -28,8 +28,15 @@ private static final long serialVersionUID = 1L;
 	}
 	
 	//Getrs and Setrs
+	
 	public String getNome() {
 		return nome;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
