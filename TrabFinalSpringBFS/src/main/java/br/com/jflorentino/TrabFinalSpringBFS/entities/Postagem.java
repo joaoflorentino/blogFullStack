@@ -1,13 +1,16 @@
 package br.com.jflorentino.TrabFinalSpringBFS.entities;
 
 import java.time.Instant;
-import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Postagem {
@@ -19,6 +22,13 @@ public class Postagem {
 	private Instant data;
 	private String titulo;
 	private String texto;
+	
+	//Criação do Relacionamento da Postagem com o Editor
+	
+	@JsonIgnore //Ignorar a geração de Json aqui para evitar o looping
+    @ManyToOne
+    @JoinColumn(name = "postagem_id")
+    private Editor editor;
 	
 	//Construtores
 	// Construtor Vazio
@@ -69,6 +79,13 @@ public class Postagem {
 		this.texto = texto;
 	}
 
+	//Metodo de contagem de  palavras
+	public double getTotalPalavras(){
+		/** Metodo que realiza a contagem de palavras no texto **/
+        String[] palavras =  this.texto.split("\\s+");
+        return +palavras.length;
+	
+	}
 	
 	// Hash and Equals
 	@Override

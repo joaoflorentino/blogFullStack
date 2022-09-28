@@ -1,11 +1,14 @@
 package br.com.jflorentino.TrabFinalSpringBFS.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Editor {
@@ -16,6 +19,10 @@ private static final long serialVersionUID = 1L;
 	private Long id;
 	private String nome;
 	private String senha;
+	
+	//Criação do Relacionamento do Editor com a Postagem
+	@OneToMany(mappedBy = "editor")
+	private List<Postagem> postagem = new ArrayList<Postagem>();
 	
 	//Construtores
 	//Construtor Vazio
