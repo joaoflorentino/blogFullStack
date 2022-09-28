@@ -73,13 +73,13 @@ public class Setup implements CommandLineRunner {
         
 	    //Postagem
         
-        Postagem p1 = new Postagem(null, Instant.parse("2021-10-20T15:00:00Z"),"Descoberta de novos planetas" , "Novos planetas descobertos na galaxia TM89A-09 pelo telescópio Huble");
-        Postagem p2 = new Postagem(null, Instant.parse("2021-11-15T15:00:00Z"),"Nova tecnologia de Foguetes" , "A empresa Space X desenvolve novos propulsores para envio de tripulação a Estação Espacial");
-        Postagem p3 = new Postagem(null, Instant.parse("2021-08-01T15:00:00Z"),"Previsão de laçamento do telescopio James Web",  "O lançamento do novo telescopio esta agendado para Dezembro de 2021 em um sabado rumo a orbita L2");
-        Postagem p4 = new Postagem(null, Instant.parse("2022-05-01T15:00:00Z"),"Equções Diferenciais",  "A Historia das equações diferenciais criadas por Isac Newton e Lagrange");
-        Postagem p5 = new Postagem(null, Instant.parse("2022-02-20T15:00:00Z"),"Quimica dos acidos do DNA",  "Observação dos ácidos que compoe o DNA pode ser observados em varios minerais");
-        Postagem p6 = new Postagem(null, Instant.parse("2020-10-20T15:00:00Z"), "Neutrinos",  "Neutrinos provenientes do Sol podem exercer influencia nos núcleos atômicos");
-        Postagem p7 = new Postagem(null, Instant.parse("2022-04-10T15:00:00Z"),"Novo Sistema Operacional",  "Novo sistema operacional Linux Mint traz diversas ferramentas para desenvolvedores de apliativos para todas as plataformas");
+        Postagem p1 = new Postagem(null, Instant.parse("2021-10-20T15:00:00Z"),"Descoberta de novos planetas" , "Novos planetas descobertos na galaxia TM89A-09 pelo telescópio Huble", e1);
+        Postagem p2 = new Postagem(null, Instant.parse("2021-11-15T15:00:00Z"),"Nova tecnologia de Foguetes" , "A empresa Space X desenvolve novos propulsores para envio de tripulação a Estação Espacial", e2);
+        Postagem p3 = new Postagem(null, Instant.parse("2021-08-01T15:00:00Z"),"Previsão de laçamento do telescopio James Web",  "O lançamento do novo telescopio esta agendado para Dezembro de 2021 em um sabado rumo a orbita L2", e4);
+        Postagem p4 = new Postagem(null, Instant.parse("2022-05-01T15:00:00Z"),"Equções Diferenciais",  "A Historia das equações diferenciais criadas por Isac Newton e Lagrange", e3);
+        Postagem p5 = new Postagem(null, Instant.parse("2022-02-20T15:00:00Z"),"Quimica dos acidos do DNA",  "Observação dos ácidos que compoe o DNA pode ser observados em varios minerais", e2);
+        Postagem p6 = new Postagem(null, Instant.parse("2020-10-20T15:00:00Z"), "Neutrinos",  "Neutrinos provenientes do Sol podem exercer influencia nos núcleos atômicos", e5);
+        Postagem p7 = new Postagem(null, Instant.parse("2022-04-10T15:00:00Z"),"Novo Sistema Operacional",  "Novo sistema operacional Linux Mint traz diversas ferramentas para desenvolvedores de apliativos para todas as plataformas", e1);
 	    
         postagemRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7));
 	    

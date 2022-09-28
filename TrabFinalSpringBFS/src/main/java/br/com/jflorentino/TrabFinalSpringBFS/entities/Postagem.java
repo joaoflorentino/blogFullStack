@@ -27,7 +27,7 @@ public class Postagem {
 	
 	@JsonIgnore //Ignorar a geração de Json aqui para evitar o looping
     @ManyToOne
-    @JoinColumn(name = "postagem_id")
+    @JoinColumn(name = "editor_id")
     private Editor editor;
 	
 	//Construtores
@@ -35,12 +35,13 @@ public class Postagem {
 	public Postagem() {}
 	
 	// Construtor Vazio	
-	public Postagem(Long id, Instant data, String titulo, String texto) {
+	public Postagem(Long id, Instant data, String titulo, String texto, Editor editor) {
 		super();
 		this.id = id;
 		this.data = data;
 		this.titulo = titulo;
 		this.texto = texto;
+		this.editor = editor;
 	}
 
 	// Getrs and Setrs
