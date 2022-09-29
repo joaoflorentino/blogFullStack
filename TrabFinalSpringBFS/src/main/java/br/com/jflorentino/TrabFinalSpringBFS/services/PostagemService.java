@@ -24,5 +24,23 @@ public class PostagemService {
 	public Postagem save(Postagem postagem){
         return postagemRepository.save(postagem);
 	}
+	
+	public void deleteById(Long id) {
+		postagemRepository.deleteById(id);
+    }
+	
+	public Postagem update(Long id, Postagem postagem) {
+	    Postagem postagemEntity = postagemRepository.getReferenceById(id);
+
+    postagemEntity.setData(postagem.getData());
+    postagemEntity.setTitulo(postagem.getTitulo());
+    postagemEntity.setTexto(postagem.getTexto());
+    postagemEntity.setEditor(postagem.getEditor());
+	
+	return postagemRepository.save(postagemEntity);
+
+    }
+	
+	
 
 }

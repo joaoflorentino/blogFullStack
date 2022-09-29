@@ -24,5 +24,21 @@ public class EditorService {
 	public Editor save(Editor editor){
         return editorRepository.save(editor);
 	}
+	
+	public void deleteById(Long id) {
+		editorRepository.deleteById(id);
+    }
+	
+	public Editor update(Long id, Editor editor) {
+	    Editor editorEntity = editorRepository.getReferenceById(id);
+
+	    editorEntity.setNome(editor.getNome());
+		editorEntity.setSenha(editor.getSenha());
+	
+		return editorRepository.save(editorEntity);
+
+    }
+	
+	
 
 }

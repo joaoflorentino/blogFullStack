@@ -25,6 +25,19 @@ public class ComentarioService {
         return comentarioRepository.save(comentario);
 	}
 	
+	public void deleteById(Long id) {
+		comentarioRepository.deleteById(id);
+    }
 	
+	public Comentario update(Long id, Comentario comentario) {
+	    Comentario comentarioEntity = comentarioRepository.getReferenceById(id);
+
+    comentarioEntity.setNome(comentario.getNome());
+    comentarioEntity.setData(comentario.getData());
+    comentarioEntity.setText(comentario.getText());
+	
+	return comentarioRepository.save(comentarioEntity);
+
+    }
 
 }

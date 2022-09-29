@@ -5,9 +5,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -38,7 +40,14 @@ public class EditorController {
     public ResponseEntity<Editor> save(@RequestBody Editor editor){
        Editor savedEditor = editorService.save(editor);
        URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("editor/{id}").buildAndExpand(savedEditor.getId()).toUri();
-    return ResponseEntity.created(uri).body(savedEditor);
-}  //created(uri) - retorna o codigo HTTP 201:(CREATED) objeto criado com sucesso
+       return ResponseEntity.created(uri).body(savedEditor);
+	}  //created(uri) - retorna o codigo HTTP 201:(CREATED) objeto criado com sucesso
+	
+	@DeleteMapping(value = "/editor")
+    @PutMapping(value = "/editor/{id}")
+	public ResponseEntity<Editor> update(@PathVariable Long id, @RequestBody Editor editor){
+		Editor editorAtualizado = editorService.update(id, editor);
+		return ResponseEntity.ok().body(editorAtualizado);
+    }
 	
 }
