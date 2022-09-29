@@ -29,12 +29,10 @@ public class Assunto {
 		this.id = id;
 		this.descricao = descricao;
 	}
-
+	
+	
 	
 	//Getrs e Setrs
-	
-	
-	
 	public String getDescricao() {
 		return descricao;
 	}

@@ -79,6 +79,15 @@ public class Postagem {
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}
+	
+
+	public Editor getEditor() {
+		return editor;
+	}
+
+	public void setEditor(Editor editor) {
+		this.editor = editor;
+	}
 
 	//Metodo de contagem de  palavras
 	public double getTotalPalavras(){
