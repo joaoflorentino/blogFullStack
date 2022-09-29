@@ -1,7 +1,9 @@
 package br.com.jflorentino.TrabFinalSpringBFS.entities;
 
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -29,6 +32,13 @@ public class Postagem {
     @ManyToOne
     @JoinColumn(name = "editor_id")
     private Editor editor;
+	
+	
+	//Relacionamento muitos pra muitos Postagem Assunto
+	//Relacionamento um pra muitos auxiliar
+	
+	@OneToMany(mappedBy = "id.postagem")
+    private Set<PostagemAssunto> postagem = new HashSet<>();
 	
 	//Construtores
 	// Construtor Vazio

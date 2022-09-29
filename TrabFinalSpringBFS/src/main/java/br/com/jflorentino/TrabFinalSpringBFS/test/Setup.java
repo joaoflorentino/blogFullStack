@@ -1,6 +1,5 @@
 package br.com.jflorentino.TrabFinalSpringBFS.test;
 
-import java.lang.reflect.Array;
 import java.time.Instant;
 import java.util.Arrays;
 
@@ -13,9 +12,11 @@ import br.com.jflorentino.TrabFinalSpringBFS.entities.Assunto;
 import br.com.jflorentino.TrabFinalSpringBFS.entities.Comentario;
 import br.com.jflorentino.TrabFinalSpringBFS.entities.Editor;
 import br.com.jflorentino.TrabFinalSpringBFS.entities.Postagem;
+import br.com.jflorentino.TrabFinalSpringBFS.entities.PostagemAssunto;
 import br.com.jflorentino.TrabFinalSpringBFS.repositories.AssuntoRepository;
 import br.com.jflorentino.TrabFinalSpringBFS.repositories.ComentarioRepository;
 import br.com.jflorentino.TrabFinalSpringBFS.repositories.EditorRepository;
+import br.com.jflorentino.TrabFinalSpringBFS.repositories.PostagemAssuntoRepository;
 import br.com.jflorentino.TrabFinalSpringBFS.repositories.PostagemRepository;
 
 @Configuration
@@ -35,6 +36,8 @@ public class Setup implements CommandLineRunner {
 	@Autowired
 	private EditorRepository editorRepository;
 	
+	@Autowired
+	private PostagemAssuntoRepository postagemAssuntoRepository;
 	
 	
 	// Dados a serem adicionados no banco de dados no start do Spring
@@ -82,7 +85,21 @@ public class Setup implements CommandLineRunner {
         Postagem p7 = new Postagem(null, Instant.parse("2022-04-10T15:00:00Z"),"Novo Sistema Operacional",  "Novo sistema operacional Linux Mint traz diversas ferramentas para desenvolvedores de apliativos para todas as plataformas", e1);
 	    
         postagemRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7));
-	    
+        
+
+        // inserindo Assuntos as Postagens
+		PostagemAssunto pa1 = new PostagemAssunto(p1, a1);
+		PostagemAssunto pa2 = new PostagemAssunto(p2, a1);
+					
+		PostagemAssunto pa3 = new PostagemAssunto(p3, a2);
+		PostagemAssunto pa4 = new PostagemAssunto(p4, a3);
+		PostagemAssunto pa5 = new PostagemAssunto(p5, a4);
+        PostagemAssunto pa6 = new PostagemAssunto(p6, a5);
+        PostagemAssunto pa7 = new PostagemAssunto(p7, a6);
+				
+        postagemAssuntoRepository.saveAll(Arrays.asList(pa1, pa2, pa3, pa4, pa5, pa6, pa7));
+        
+        
 	    
 	}
 	
