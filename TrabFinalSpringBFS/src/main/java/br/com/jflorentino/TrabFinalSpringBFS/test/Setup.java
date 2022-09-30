@@ -54,17 +54,6 @@ public class Setup implements CommandLineRunner {
 
 	    assuntoRepository.saveAll(Arrays.asList(a1,a2,a3,a4,a5,a6));
 	    
-	    //Comentarios
-	    Comentario c1 = new Comentario(null,"Descoberta de novos planetas" ,Instant.parse("2021-10-20T15:00:00Z"), "Novos planetas descobertos na galaxia TM89A-09 pelo telescópio Huble");
-        Comentario c2 = new Comentario(null,"Nova tecnologia de Foguetes" ,Instant.parse("2021-11-15T15:00:00Z"), "A empresa Space X desenvolve novos propulsores para envio de tripulação a Estação Espacial");
-        Comentario c3 = new Comentario(null,"Previsão de laçamento do telescopio James Web", Instant.parse("2021-08-01T15:00:00Z"), "O lançamento do novo telescopio esta agendado para Dezembro de 2021 em um sabado rumo a orbita L2");
-        Comentario c4 = new Comentario(null,"Equções Diferenciais", Instant.parse("2022-05-01T15:00:00Z"), "Comentario sobre as equações diferenciais criadas por Isac Newton e Lagrange");
-        Comentario c5 = new Comentario(null,"Quimica dos acidos do DNA", Instant.parse("2022-02-20T15:00:00Z"), "Observação dos ácidos que compoe o DNA pode ser observados em varios minerais");
-        Comentario c6 = new Comentario(null,"Neutrinos", Instant.parse("2020-10-20T15:00:00Z"), "Neutrinos provenientes do Sol podem exercer influencia nos núcleos atômicos");
-        Comentario c7 = new Comentario(null,"Novo Sistema Operacional", Instant.parse("2022-04-10T15:00:00Z"), "Novo sistema operacional Linux Mint traz diversas ferramentas para desenvolvedores de apliativos para todas as plataformas");
-	    
-        comentarioRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6, c7));
-        
 	    //Editor
         Editor e1 = new Editor(null, "Arthur C Clark","Boss1988");
         Editor e2 = new Editor(null, "Paster","Pari1877");
@@ -73,8 +62,8 @@ public class Setup implements CommandLineRunner {
         Editor e5 = new Editor(null, "Ctistan Gale","virtua14");
         
         editorRepository.saveAll(Arrays.asList(e1, e2, e3, e4, e5));
-        
-	    //Postagem
+	    
+        //Postagem
         
         Postagem p1 = new Postagem(null, Instant.parse("2021-10-20T15:00:00Z"),"Descoberta de novos planetas" , "Novos planetas descobertos na galaxia TM89A-09 pelo telescópio Huble", e1);
         Postagem p2 = new Postagem(null, Instant.parse("2021-11-15T15:00:00Z"),"Nova tecnologia de Foguetes" , "A empresa Space X desenvolve novos propulsores para envio de tripulação a Estação Espacial", e2);
@@ -85,8 +74,18 @@ public class Setup implements CommandLineRunner {
         Postagem p7 = new Postagem(null, Instant.parse("2022-04-10T15:00:00Z"),"Novo Sistema Operacional",  "Novo sistema operacional Linux Mint traz diversas ferramentas para desenvolvedores de apliativos para todas as plataformas", e1);
 	    
         postagemRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5, p6, p7));
+	    
+	    //Comentarios
+	    Comentario c1 = new Comentario(null,"Descoberta de novos planetas" ,Instant.parse("2021-10-20T15:00:00Z"), "Novos planetas descobertos na galaxia TM89A-09 pelo telescópio Huble", p1);
+        Comentario c2 = new Comentario(null,"Nova tecnologia de Foguetes" ,Instant.parse("2021-11-15T15:00:00Z"), "A empresa Space X desenvolve novos propulsores para envio de tripulação a Estação Espacial", p2);
+        Comentario c3 = new Comentario(null,"Previsão de laçamento do telescopio James Web", Instant.parse("2021-08-01T15:00:00Z"), "O lançamento do novo telescopio esta agendado para Dezembro de 2021 em um sabado rumo a orbita L2", p3);
+        Comentario c4 = new Comentario(null,"Equções Diferenciais", Instant.parse("2022-05-01T15:00:00Z"), "Comentario sobre as equações diferenciais criadas por Isac Newton e Lagrange", p4);
+        Comentario c5 = new Comentario(null,"Quimica dos acidos do DNA", Instant.parse("2022-02-20T15:00:00Z"), "Observação dos ácidos que compoe o DNA pode ser observados em varios minerais", p5);
+        Comentario c6 = new Comentario(null,"Neutrinos", Instant.parse("2020-10-20T15:00:00Z"), "Neutrinos provenientes do Sol podem exercer influencia nos núcleos atômicos", p6);
+        Comentario c7 = new Comentario(null,"Novo Sistema Operacional", Instant.parse("2022-04-10T15:00:00Z"), "Novo sistema operacional Linux Mint traz diversas ferramentas para desenvolvedores de apliativos para todas as plataformas", p7);
+	    
+        comentarioRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6, c7));
         
-
         // inserindo Assuntos as Postagens
 		PostagemAssunto pa1 = new PostagemAssunto(p1, a1);
 		PostagemAssunto pa2 = new PostagemAssunto(p2, a1);

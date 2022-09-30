@@ -1,6 +1,9 @@
 package br.com.jflorentino.TrabFinalSpringBFS.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+
+import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +21,11 @@ public class ComentarioService {
 	}
 	
 	public Comentario findById(Long id) {
+		try {
 		return comentarioRepository.findById(id).get();
+		} catch (NoSuchElementException e) {
+			throw new EntityNotFoundException("Elemento não encontrado com Postagem id: " + id);
+		}
 	}
 	
 	public Comentario save(Comentario comentario){

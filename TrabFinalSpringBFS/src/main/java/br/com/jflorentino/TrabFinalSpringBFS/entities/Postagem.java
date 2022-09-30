@@ -1,7 +1,9 @@
 package br.com.jflorentino.TrabFinalSpringBFS.entities;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -40,11 +42,15 @@ public class Postagem {
 	@OneToMany(mappedBy = "id.postagem")
     private Set<PostagemAssunto> postagem = new HashSet<>();
 	
+	//Relacionamento com a classe Comentario
+	@OneToMany(mappedBy = "postagem")
+    private List<Comentario> comentario = new ArrayList<Comentario>();
+	
 	//Construtores
 	// Construtor Vazio
 	public Postagem() {}
 	
-	// Construtor Vazio	
+	// Construtor com todos os atributos
 	public Postagem(Long id, Instant data, String titulo, String texto, Editor editor) {
 		super();
 		this.id = id;

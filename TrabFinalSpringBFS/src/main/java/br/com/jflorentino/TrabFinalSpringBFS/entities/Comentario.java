@@ -1,13 +1,16 @@
 package br.com.jflorentino.TrabFinalSpringBFS.entities;
 
 import java.time.Instant;
-import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Comentario {
@@ -20,16 +23,22 @@ private static final long serialVersionUID = 1L;
 	private Instant data;
 	private String text;
 	
-	
+	//Relacionamento com a classe Postagem
+		@JsonIgnore //Ignorar a geração de Json aqui para evitar o looping
+	    @ManyToOne
+	    @JoinColumn(name = "comentario_id")
+	    private Postagem postagem;
+		
 	//Construtores
 	//Construtor Vazio
 	public Comentario() {}
 	//Construtor com todos os atributos
-	public Comentario(Long id,String nome, Instant data, String text) {
+	public Comentario(Long id,String nome, Instant data, String text, Postagem postagem) {
 		super();
 		this.nome = nome;
 		this.data = data;
 		this.text = text;
+		this.postagem = postagem;
 	}
 	
 	//Getrs and Setrs
@@ -60,8 +69,15 @@ private static final long serialVersionUID = 1L;
 		this.text = text;
 	}
 	
-	//Hash and Equals 
+	public Postagem getPostagem() {
+		return postagem;
+	}
+	public void setPostagem(Postagem postagem) {
+		this.postagem = postagem;
+	}
 	
+	
+	//Hash and Equals 
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

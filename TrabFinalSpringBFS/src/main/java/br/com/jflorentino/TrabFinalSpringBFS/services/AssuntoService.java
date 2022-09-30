@@ -1,6 +1,9 @@
 package br.com.jflorentino.TrabFinalSpringBFS.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+
+import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +22,12 @@ public class AssuntoService {
 	}
 	
 	public Assunto findById(Long id) {
-		return assuntoRepository.findById(id).get();
+		try {
+			return assuntoRepository.findById(id).get();
+		} catch (NoSuchElementException e) {
+			throw new EntityNotFoundException("Elemento não encontrado com Postagem id: " + id);
+		}
+		
 	}
 	
 	public void deleteById(Long id) {

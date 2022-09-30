@@ -55,6 +55,18 @@ private static final long serialVersionUID = 1L;
 		this.senha = senha;
 	}
 	
+	//Função de contagem de postagem dos Editores
+	
+	/* INCOMPLETO NÃO SOUBE FAZER
+	public double getTotalPostagens(){
+		List<Postagem> postagem = new ArrayList<Postagem>();
+		double i = 0;
+		double d = this.id.doubleValue();
+			i = i + 1;
+			return i;
+	} 
+	*/
+	
 	//Hash and Equals
 	@Override
 	public int hashCode() {
